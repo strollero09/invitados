@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gracias por venir - UP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(to bottom,#87CEEB,#dff6ff);
+    position:relative;
+}
+
+/* NUBES */
+
+.cloud{
+    position:absolute;
+    background:white;
+    border-radius:50px;
+    opacity:0.9;
+    animation:cloudMove linear infinite;
+}
+
+.cloud::before,
+.cloud::after{
+    content:'';
+    position:absolute;
+    background:white;
+    border-radius:50%;
+}
+
+.cloud1{
+    width:180px;
+    height:60px;
+    top:80px;
+    left:-250px;
+    animation-duration:40s;
+}
+
+.cloud1::before{
+    width:90px;
+    height:90px;
+    top:-40px;
+    left:25px;
+}
+
+.cloud1::after{
+    width:100px;
+    height:100px;
+    top:-45px;
+    right:20px;
+}
+
+.cloud2{
+    width:140px;
+    height:50px;
+    top:250px;
+    left:-200px;
+    animation-duration:55s;
+}
+
+.cloud2::before{
+    width:70px;
+    height:70px;
+    top:-30px;
+    left:20px;
+}
+
+.cloud2::after{
+    width:80px;
+    height:80px;
+    top:-35px;
+    right:20px;
+}
+
+@keyframes cloudMove{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(140vw);
+    }
+}
+
+/* CASA */
+
+.house-container{
+    position:absolute;
+    left:-400px;
+    top:180px;
+    animation:flyHouse 18s linear infinite;
+}
+
+.house{
+    width:min(300px, 70vw);
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes flyHouse{
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(160vw);
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+/* CARD */
+
+.card{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:700px;
+    background:rgba(255,255,255,0.92);
+    border-radius:35px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,0.15);
+    backdrop-filter:blur(8px);
+}
+
+h1{
+    font-family:'Pacifico', cursive;
+    font-size:clamp(2rem, 6vw, 3rem);
+    color:#ff7b54;
+    margin-bottom:15px;
+}
+
+.message{
+    font-size:clamp(0.95rem, 3vw, 1.2rem);
+    color:#555;
+    line-height:1.8;
+}
+
+.quote{
+    margin-top:25px;
+    color:#777;
+    font-style:italic;
+    font-size:clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+/* GLOBOS */
+
+.balloon{
+    position:absolute;
+    width:35px;
+    height:45px;
+    border-radius:50%;
+    opacity:0.8;
+    animation:balloonFloat linear infinite;
+}
+
+.balloon::after{
+    content:'';
+    position:absolute;
+    width:2px;
+    height:40px;
+    background:#999;
+    left:50%;
+    top:45px;
+}
+
+.balloon1{
+    background:#ff6b6b;
+    left:10%;
+    bottom:-100px;
+    animation-duration:12s;
+}
+
+.balloon2{
+    background:#ffd166;
+    left:25%;
+    bottom:-120px;
+    animation-duration:15s;
+}
+
+.balloon3{
+    background:#4ecdc4;
+    right:20%;
+    bottom:-120px;
+    animation-duration:13s;
+}
+
+.balloon4{
+    background:#5e60ce;
+    right:10%;
+    bottom:-100px;
+    animation-duration:16s;
+}
+
+@keyframes balloonFloat{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    100%{
+        transform:translateY(-120vh);
+    }
+
+}
+
+/* BOTÓN MÚSICA */
+
+#musicBtn{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,0.9);
+    font-size:24px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    z-index:999;
+    transition:0.3s;
+}
+
+#musicBtn:hover{
+    transform:scale(1.1);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .house-container{
+        top:160px;
+        left:-250px;
+        animation:flyHouseMobile 15s linear infinite;
+    }
+
+    .house{
+        width:180px;
+    }
+
+    .card{
+        width:92%;
+        padding:25px 20px;
+        bottom:20px;
+        border-radius:25px;
+    }
+
+    .balloon{
+        transform:scale(0.8);
+    }
+
+    #musicBtn{
+        top:15px;
+        right:15px;
+        width:50px;
+        height:50px;
+        font-size:22px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .house{
+        width:150px;
+    }
+
+    .house-container{
+        top:140px;
+    }
+
+    .card{
+        padding:20px 15px;
+        bottom:15px;
+    }
+
+    .message{
+        font-size:0.95rem;
+    }
+
+    .quote{
+        margin-top:18px;
+    }
+
+    .balloon{
+        transform:scale(0.7);
+    }
+
+}
+
+@keyframes flyHouseMobile{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(140vw);
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- NUBES -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+
+<!-- CASA VOLANDO -->
+<div class="house-container">
+    <img class="house" src="up.png" alt="Casa UP">
+</div>
+
+<!-- GLOBOS -->
+<div class="balloon balloon1"></div>
+<div class="balloon balloon2"></div>
+<div class="balloon balloon3"></div>
+<div class="balloon balloon4"></div>
+
+<!-- MENSAJE -->
+<div class="card">
+
+    <h1>¡Gracias por venir!</h1>
+
+    <p class="message">
+        Gracias por acompañarnos en esta gran aventura
+        <br><br>
+        Tu presencia hizo este día aún más especial y lleno
+        de momentos inolvidables.
+        <br><br>
+        Esperamos que hayas disfrutado cada instante
+        tanto como nosotros.
+    </p>
+
+    <p class="quote">
+        “Recuerda que la aventura nos espera.”
+    </p>
+
+</div>
+
+<!-- MÚSICA -->
+<audio id="music" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- BOTÓN -->
+<button id="musicBtn">🎵</button>
+
+<script>
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+// ACTIVAR MÚSICA
+document.addEventListener("click", () => {
+    music.play();
+}, { once: true });
+
+// PLAY / PAUSE
+musicBtn.addEventListener("click", () => {
+
+    if(music.paused){
+        music.play();
+        musicBtn.innerHTML = "🎵";
+    }else{
+        music.pause();
+        musicBtn.innerHTML = "🔇";
+    }
+
+});
+
+</script>
+
+</body>
+</html>
